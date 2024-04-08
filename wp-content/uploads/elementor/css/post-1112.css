@@ -1,0 +1,177 @@
+.elementor-1112 .elementor-element.elementor-element-dea8f0f{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}.elementor-1112 .elementor-element.elementor-element-4c12a9f{width:100%;max-width:100%;}.elementor-1112 .elementor-element.elementor-element-53c6628{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}.elementor-1112 .elementor-element.elementor-element-2d13c5e > .elementor-widget-container{margin:-20px -150px 0px -150px;}.elementor-1112 .elementor-element.elementor-element-2d13c5e{width:100%;max-width:100%;}.elementor-1112 .elementor-element.elementor-element-083c5b9{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}/* Start custom CSS for html, class: .elementor-element-6f4f3a7 */#find-plants-name {
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    color: #4CAF50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#plant-search-name {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    overflow: hidden;
+    margin-right: 20px;
+    text-align: center;
+    width: 600px;
+    margin: auto;
+}
+
+#plant-search-name-form {
+  display: block;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+#plant-search-name-form label {
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+#plant-search-name-form select {
+    padding: 9px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 40px;
+}
+
+#plant-search-name-form button:hover {
+    background-color: #45a049;
+}
+
+#plant-search-name-form button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+#plant-search-name-form button[type="button"] {
+    background-color: #a65b26;
+}
+
+#plant-search-name-form button[type="button"]:hover {
+    background-color: #8B4513;
+}
+
+#image-gallery-plant-name {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card {
+  background-color: transparent;
+  font-family: 'Arial', sans-serif;
+  width: 400px;
+  height: 400px;
+  perspective: 1000px;
+  display: inline-block;
+}
+
+.flip-card-inner {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius:10px;
+}
+
+.flip-card-front {
+  background-color: #f9f9f9;
+  border: 2px solid #f2f2f2;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, #004d00, #8B4513);
+  color: #ffffff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  /*display: block;*/
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.plant-image img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.plant-details {
+  text-align: center;
+}
+
+.plant-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.common-name {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.detail-row {
+  align-items: center;
+}
+
+.detail-row i {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #4CAF50; 
+}
+
+.detail-row span {
+  font-family: 'CustomFont', cursive;
+}/* End custom CSS */

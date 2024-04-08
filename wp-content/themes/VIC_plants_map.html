@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d86911b05f583cfc66212264933dda00 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 50px; right: 50px; z-index: 1000; background-color: transparent; border: 2px solid black; padding: 3px; max-height: 200px; overflow-y: auto;">
+     <p style="font-size: 16px;"><b>Legend</b></p>
+     <p><i class="fa fa-circle fa-lg" style="color:blue"></i> Shrub</p>
+     <p><i class="fa fa-circle fa-lg" style="color:green"></i> Aquatic</p>
+     <p><i class="fa fa-circle fa-lg" style="color:red"></i> Medium Tree</p>
+     <p><i class="fa fa-circle fa-lg" style="color:orange"></i> Perennial</p>
+     <p><i class="fa fa-circle fa-lg" style="color:purple"></i> Grass</p>
+     <p><i class="fa fa-circle fa-lg" style="color:pink"></i> Annual</p>
+     <p><i class="fa fa-circle fa-lg" style="color:gray"></i> Bulb</p>
+     <p><i class="fa fa-circle fa-lg" style="color:brown"></i> Fern</p>
+     <p><i class="fa fa-circle fa-lg" style="color:cyan"></i> Climber</p>
+     <p><i class="fa fa-circle fa-lg" style="color:magenta"></i> Small Tree</p>
+     <p><i class="fa fa-circle fa-lg" style="color:lime"></i> Groundcover</p>
+     <p><i class="fa fa-circle fa-lg" style="color:olive"></i> Perennial</p>
+     <p><i class="fa fa-circle fa-lg" style="color:yellow"></i> Herb </p>
+</div>
+    
+            <div class="folium-map" id="map_d86911b05f583cfc66212264933dda00" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d86911b05f583cfc66212264933dda00 = L.map(
+                "map_d86911b05f583cfc66212264933dda00",
+                {
+                    center: [-36.85, 144.3],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0da41de4157dca7329e83e04e7726869 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_0da41de4157dca7329e83e04e7726869.addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var marker_065b21a9b50bc47162be8587e51a2daa = L.marker(
+                [-37.22976346965294, 144.7111701300366],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_2df759eb86a1f49863c896e947dfb371 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_065b21a9b50bc47162be8587e51a2daa.setIcon(icon_2df759eb86a1f49863c896e947dfb371);
+        
+    
+            marker_065b21a9b50bc47162be8587e51a2daa.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>ACACIA LONGIFOLIA SUBSP. SOPHORAE</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam,Clay<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/b/b5/Acacia_sophorae_PC160087.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_82c765e4651bdf473ddb16f07c27ce45 = L.marker(
+                [-36.110253304434806, 145.91166336576055],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_ab3786e32f48d2e48bb8fc952d78389d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_82c765e4651bdf473ddb16f07c27ce45.setIcon(icon_ab3786e32f48d2e48bb8fc952d78389d);
+        
+    
+            marker_82c765e4651bdf473ddb16f07c27ce45.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>ALISMA PLANTAGO-AQUATICA</b><br><br><b>Water Needs:</b> 2000 to 2500mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/5/58/Alisma_plantago-aquatica_kz04.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d2d301f7317db8052760ced4e1d236b6 = L.marker(
+                [-37.81323518144328, 143.57715155592263],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_6ccb874cc007769053ac8ce0b55452b3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d2d301f7317db8052760ced4e1d236b6.setIcon(icon_6ccb874cc007769053ac8ce0b55452b3);
+        
+    
+            marker_d2d301f7317db8052760ced4e1d236b6.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>ALLOCASUARINA LITTORALIS</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam,Clay<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/e/ea/Allocasuarina_littoralis_%28male%29_near_dog_%27off_the_leash%27_area_01.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bbc467a5a1ac8f30cd850010a9c2a812 = L.marker(
+                [-36.205383228555576, 145.87666351949264],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_466473caaa4b729cf31f99d6a23c9513 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_bbc467a5a1ac8f30cd850010a9c2a812.setIcon(icon_466473caaa4b729cf31f99d6a23c9513);
+        
+    
+            marker_bbc467a5a1ac8f30cd850010a9c2a812.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>ARTHROPODIUM MILLEFLORUM</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Dry Subtropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/c/ca/Arthropodium_milleflorum.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_07c0a4f08ca4e6026d59cffe806e866c = L.marker(
+                [-37.54364782099273, 145.03673033035972],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_90f6c0b1c0732aaa14d32817bf2c900f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_07c0a4f08ca4e6026d59cffe806e866c.setIcon(icon_90f6c0b1c0732aaa14d32817bf2c900f);
+        
+    
+            marker_07c0a4f08ca4e6026d59cffe806e866c.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>BOTHRIOCHLOA MACRA</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/d/df/Bothriochloa_macra.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e8a5874db96f6fbf0c563b5cf4e94ea4 = L.marker(
+                [-37.639955441898366, 143.53778835583628],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_da3564bb86f9de92fd06f8532a6aa240 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_e8a5874db96f6fbf0c563b5cf4e94ea4.setIcon(icon_da3564bb86f9de92fd06f8532a6aa240);
+        
+    
+            marker_e8a5874db96f6fbf0c563b5cf4e94ea4.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>BRACHYSCOME MULTIFIDA</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/d/d4/Brachyscome_multifida_BR.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2c6bc5b12f52acfe63be513212ec7cbe = L.marker(
+                [-36.21956882345734, 144.72726835973288],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_d726bd41f320cc1d7d2e23699b94d095 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_2c6bc5b12f52acfe63be513212ec7cbe.setIcon(icon_d726bd41f320cc1d7d2e23699b94d095);
+        
+    
+            marker_2c6bc5b12f52acfe63be513212ec7cbe.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>XEROCHRYSUM BRACTEATUM</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Sand,Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Dry Tropical,Humid Subtropical,Dry Subtropical,Desert,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/1/19/Xerochrysum_bracteatum%2C_wild.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a7284d38107668791faf67fc8c8ad1ba = L.marker(
+                [-36.074438977387246, 143.07065081960192],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_4ffa8e108524b00306f921823f85e6bf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_a7284d38107668791faf67fc8c8ad1ba.setIcon(icon_4ffa8e108524b00306f921823f85e6bf);
+        
+    
+            marker_a7284d38107668791faf67fc8c8ad1ba.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>XEROCHRYSUM BRACTEATUM</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/1/19/Xerochrysum_bracteatum%2C_wild.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_051134afc0d49f2b515fe91d1b26c8c6 = L.marker(
+                [-36.814815246165296, 142.71012383015832],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_434c85442c78a7c8b0717ffa07c6acdc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_051134afc0d49f2b515fe91d1b26c8c6.setIcon(icon_434c85442c78a7c8b0717ffa07c6acdc);
+        
+    
+            marker_051134afc0d49f2b515fe91d1b26c8c6.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>BULBINE BULBOSA</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/7/70/Bulbine_bulbosa_flower.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_03eb852bb413afa4f21a87d86ed428ad = L.marker(
+                [-36.261680055180776, 144.06172990276258],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_9cd8a0e33891540c835637d8e3b3c514 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_03eb852bb413afa4f21a87d86ed428ad.setIcon(icon_9cd8a0e33891540c835637d8e3b3c514);
+        
+    
+            marker_03eb852bb413afa4f21a87d86ed428ad.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>LEUCOPHYTA BROWNII</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/4/4b/Leucophyta_brownii%2C_jard%C3%ADn_bot%C3%A1nico_de_Tallinn%2C_Estonia%2C_2012-08-13%2C_DD_01.JPG' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a07025a71c9f70da123c5acd52ce7973 = L.marker(
+                [-36.85861510142099, 142.9280908588923],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_2a8d8bc26faa35c50acc8ef99169b4f7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_a07025a71c9f70da123c5acd52ce7973.setIcon(icon_2a8d8bc26faa35c50acc8ef99169b4f7);
+        
+    
+            marker_a07025a71c9f70da123c5acd52ce7973.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>CALOCHLAENA DUBIA</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/5/5b/Calochlaena_dubia_%288720289496%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cbd1ae248e065b532df8b68b4724d0f2 = L.marker(
+                [-36.10448722583404, 145.53091953479117],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_fec5f066b884a66a7097f77e090cf045 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_cbd1ae248e065b532df8b68b4724d0f2.setIcon(icon_fec5f066b884a66a7097f77e090cf045);
+        
+    
+            marker_cbd1ae248e065b532df8b68b4724d0f2.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>CAREX APPRESSA</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/e/e1/Carex_appressa_%283438025070%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_da67923e0996439017b625bc81b70b6e = L.marker(
+                [-36.917512899465486, 143.96464685286782],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_50ff39754d3a9ceeb89172f78053a488 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_da67923e0996439017b625bc81b70b6e.setIcon(icon_50ff39754d3a9ceeb89172f78053a488);
+        
+    
+            marker_da67923e0996439017b625bc81b70b6e.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>CAREX BREVICULMIS</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/6/6d/Carex_breviculmis_aosg11.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5e3608524c7860db8bb7a736966820f = L.marker(
+                [-36.851304872527614, 145.79135536391334],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_120986e89973548a7414ef3af5ebee1c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_a5e3608524c7860db8bb7a736966820f.setIcon(icon_120986e89973548a7414ef3af5ebee1c);
+        
+    
+            marker_a5e3608524c7860db8bb7a736966820f.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>CAREX FASCICULARIS</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/2/2a/Carex_fascicularis_%2815435099922%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f977a33291fb88d5c9fb4c32009ad9cc = L.marker(
+                [-37.154658154492495, 142.76588048865665],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_c1424ff28cc38c4a963c29f3a3e77fb6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_f977a33291fb88d5c9fb4c32009ad9cc.setIcon(icon_c1424ff28cc38c4a963c29f3a3e77fb6);
+        
+    
+            marker_f977a33291fb88d5c9fb4c32009ad9cc.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>CAREX POLYANTHA</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/b/b5/Item_3a_-_Sensitive_Species_National_Master_List_By_Region_and_Species_Group.pdf' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_341b755fc7930c290a56b2ee11de0b1e = L.marker(
+                [-36.71877413985014, 145.47664375245816],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_9bec233ce54ff27396d62c09cb167566 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_341b755fc7930c290a56b2ee11de0b1e.setIcon(icon_9bec233ce54ff27396d62c09cb167566);
+        
+    
+            marker_341b755fc7930c290a56b2ee11de0b1e.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>CULLEN TENAX</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Dry Tropical,Humid Subtropical,Dry Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/6/6c/Cullen_tenax_plant3_%2810738523723%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d6011d9f379055adf1ebe1ff4f662877 = L.marker(
+                [-36.828179046310325, 146.29551640641807],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_c37ad603263cefecc18929b3e3adf590 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_d6011d9f379055adf1ebe1ff4f662877.setIcon(icon_c37ad603263cefecc18929b3e3adf590);
+        
+    
+            marker_d6011d9f379055adf1ebe1ff4f662877.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>CYATHEA AUSTRALIS</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/1/11/Cyathea_cooperi.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1ccc1ef1491acd25c6b40a2d2d208ce0 = L.marker(
+                [-37.180720117929944, 144.95881865063518],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_4e0d7d0672b4b5c3de699ff648f85aef = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_1ccc1ef1491acd25c6b40a2d2d208ce0.setIcon(icon_4e0d7d0672b4b5c3de699ff648f85aef);
+        
+    
+            marker_1ccc1ef1491acd25c6b40a2d2d208ce0.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>CYPERUS LUCIDUS</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/5/50/Cyperus_lucidus_%286700429663%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1aa6eb14160d224dce29a1c948db1e50 = L.marker(
+                [-36.67411608795164, 144.42292186114688],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_2b3f0b32b21e3815ae4bb854a29d81db = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_1aa6eb14160d224dce29a1c948db1e50.setIcon(icon_2b3f0b32b21e3815ae4bb854a29d81db);
+        
+    
+            marker_1aa6eb14160d224dce29a1c948db1e50.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>DICHONDRA REPENS</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/f/fa/Dichondra_repens_Eastwood.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e31e9b6deee7c5c5b494a08935bc8ad5 = L.marker(
+                [-36.57861294186589, 142.71684716435823],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_11fd044ad1262ffd6e6194a9a501869c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_e31e9b6deee7c5c5b494a08935bc8ad5.setIcon(icon_11fd044ad1262ffd6e6194a9a501869c);
+        
+    
+            marker_e31e9b6deee7c5c5b494a08935bc8ad5.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>DICKSONIA ANTARCTICA</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Shade<br><b>Climate Zones:</b> Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/7/7e/Dicksonia_antarctica_MHNT.BOT.2012.10.39.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_42f4dc88e3477827e774bf73a257ce14 = L.marker(
+                [-36.87958023186215, 145.68079867302905],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_e7e0ed6ab18b02c720691f9099654c02 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_42f4dc88e3477827e774bf73a257ce14.setIcon(icon_e7e0ed6ab18b02c720691f9099654c02);
+        
+    
+            marker_42f4dc88e3477827e774bf73a257ce14.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>ELEOCHARIS SPHACELATA</b><br><br><b>Water Needs:</b> 2000 to 2500mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/5/53/Eleocharis_sphacelata_kz05.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d1d0a14d1a4385810c395e01c1533aa8 = L.marker(
+                [-37.31169111313249, 143.1489801536419],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_1c4a3a7d5689a640d1e5620488018c51 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_d1d0a14d1a4385810c395e01c1533aa8.setIcon(icon_1c4a3a7d5689a640d1e5620488018c51);
+        
+    
+            marker_d1d0a14d1a4385810c395e01c1533aa8.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>GAHNIA SIEBERIANA</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Sand,Loam,Clay<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/8/8b/Gahnia_sieberiana_flowerhead.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d13cfe00fcd2106774cb6f31449df3d1 = L.marker(
+                [-37.692379630446275, 144.4688645272634],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_57c73b65461876fe6e68b8948574d7f7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_d13cfe00fcd2106774cb6f31449df3d1.setIcon(icon_57c73b65461876fe6e68b8948574d7f7);
+        
+    
+            marker_d13cfe00fcd2106774cb6f31449df3d1.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>GOODENIA OVATA</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/f/fe/Goodenia_ovata.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7478c16229c75f341c66ab2e06f9b13c = L.marker(
+                [-37.01550721146417, 142.48779153437295],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_f08544061e71c3e423de925a62d65def = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "cyan", "prefix": "glyphicon"}
+            );
+            marker_7478c16229c75f341c66ab2e06f9b13c.setIcon(icon_f08544061e71c3e423de925a62d65def);
+        
+    
+            marker_7478c16229c75f341c66ab2e06f9b13c.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>HARDENBERGIA VIOLACEA</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/c/c8/Hardenbergia_violacea_kz01.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ee4601d082013e3cd3c5611e1e440c96 = L.marker(
+                [-36.14725241452053, 144.12485225740778],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_3562834275d88587371d1ee301b80299 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_ee4601d082013e3cd3c5611e1e440c96.setIcon(icon_3562834275d88587371d1ee301b80299);
+        
+    
+            marker_ee4601d082013e3cd3c5611e1e440c96.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>HISTIOPTERIS INCISA</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/e/ed/Histiopteris_incisa.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_94089232191636ad04147c70bc72c65d = L.marker(
+                [-36.84158911504158, 142.61410862755938],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_e2d1dd3f9683cd8f5ec551339020ea9b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_94089232191636ad04147c70bc72c65d.setIcon(icon_e2d1dd3f9683cd8f5ec551339020ea9b);
+        
+    
+            marker_94089232191636ad04147c70bc72c65d.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>IMPERATA CYLINDRICA</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam,Clay<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/f/fd/Cogon_Grass_Arnehar_Himachal_May19_D72_10265.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5a883eaeb5034180d8a556db6fde38d = L.marker(
+                [-37.31843095045598, 144.86210524611622],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_8233cc71cf25028ccfc70b76165ef2fa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_a5a883eaeb5034180d8a556db6fde38d.setIcon(icon_8233cc71cf25028ccfc70b76165ef2fa);
+        
+    
+            marker_a5a883eaeb5034180d8a556db6fde38d.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>INDIGOFERA AUSTRALIS</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/2/2c/Indigofera_australis-young-flowers-cropped.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_57ae8ece77b1ab4db9a6009675cc19b3 = L.marker(
+                [-37.03741277444918, 145.01008020368323],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_99364a1250fb3631f953ccc9145d8353 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_57ae8ece77b1ab4db9a6009675cc19b3.setIcon(icon_99364a1250fb3631f953ccc9145d8353);
+        
+    
+            marker_57ae8ece77b1ab4db9a6009675cc19b3.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>JUNCUS USITATUS</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/1/11/Juncus_usitatus.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_30d7085f25163e9436d5d8cc66731c5f = L.marker(
+                [-37.051816250616056, 144.52484396000938],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_24a7dceb574349f426d70db0eb24e18d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "magenta", "prefix": "glyphicon"}
+            );
+            marker_30d7085f25163e9436d5d8cc66731c5f.setIcon(icon_24a7dceb574349f426d70db0eb24e18d);
+        
+    
+            marker_30d7085f25163e9436d5d8cc66731c5f.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>LEPTOSPERMUM LAEVIGATUM</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam,Clay<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/1/1d/Leptospermum_laevigatum_flowers_and_foliage.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d399c5ae380bcef4e350bbdf80c9af00 = L.marker(
+                [-37.72228706599763, 145.40700963764195],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_36bcc12249b303da0a77fbd0c2f9bac5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_d399c5ae380bcef4e350bbdf80c9af00.setIcon(icon_36bcc12249b303da0a77fbd0c2f9bac5);
+        
+    
+            marker_d399c5ae380bcef4e350bbdf80c9af00.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>LEPTOSPERMUM SCOPARIUM</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam,Clay<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/e/ed/Leptospermum_scoparium_117526805.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e392a49405d97c02d58aa9d0039d53ab = L.marker(
+                [-36.65438418908873, 142.4186027086722],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_69961d4655f591349a59f7f3760252ea = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_e392a49405d97c02d58aa9d0039d53ab.setIcon(icon_69961d4655f591349a59f7f3760252ea);
+        
+    
+            marker_e392a49405d97c02d58aa9d0039d53ab.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>MARSILEA HIRSUTA</b><br><br><b>Water Needs:</b> 2500mm or more<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/e/ee/Marsilea_hirsuta_plant_NC1.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ecc9d489d2f61ccb57b48ec21f90d0ae = L.marker(
+                [-37.66762742632531, 144.0781969494761],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_d06eb2ca088068385c749706386df553 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lime", "prefix": "glyphicon"}
+            );
+            marker_ecc9d489d2f61ccb57b48ec21f90d0ae.setIcon(icon_d06eb2ca088068385c749706386df553);
+        
+    
+            marker_ecc9d489d2f61ccb57b48ec21f90d0ae.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>MAZUS PUMILIO</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/d/d4/Mazus_pumilio_with_flower.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_75583ea61eea449d8745376985679c2c = L.marker(
+                [-36.757391873540435, 145.29624580495363],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_740a5d82d041242cb21037e430d67a3c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "yellow", "prefix": "glyphicon"}
+            );
+            marker_75583ea61eea449d8745376985679c2c.setIcon(icon_740a5d82d041242cb21037e430d67a3c);
+        
+    
+            marker_75583ea61eea449d8745376985679c2c.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>MENTHA AUSTRALIS</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/9/97/Mentha_australis_46762257.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6b98b2cf8431b67fee9dbf69ca364e6e = L.marker(
+                [-37.198227210656114, 143.88979026437843],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_128e016cad5186cbecab95177cf338ca = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_6b98b2cf8431b67fee9dbf69ca364e6e.setIcon(icon_128e016cad5186cbecab95177cf338ca);
+        
+    
+            marker_6b98b2cf8431b67fee9dbf69ca364e6e.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>MENTHA AUSTRALIS</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/9/97/Mentha_australis_46762257.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0f7fe3723eabeee0b9c677c8bd030752 = L.marker(
+                [-36.27278768781042, 144.04999967554048],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_a9507a32d0ab574797085fc8ed52e2f0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lime", "prefix": "glyphicon"}
+            );
+            marker_0f7fe3723eabeee0b9c677c8bd030752.setIcon(icon_a9507a32d0ab574797085fc8ed52e2f0);
+        
+    
+            marker_0f7fe3723eabeee0b9c677c8bd030752.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>MYOPORUM PARVIFOLIUM</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/f/fa/Myoporum_parvifolium_-_UC_Santa_Cruz_Arboretum_-_DSC07387.JPG' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_da3fe381c7ef5b568e40a2a4503c5734 = L.marker(
+                [-37.430338772173705, 144.4320902016776],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_003fd86bdd4b7c0aeefc9ae225dbadc7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_da3fe381c7ef5b568e40a2a4503c5734.setIcon(icon_003fd86bdd4b7c0aeefc9ae225dbadc7);
+        
+    
+            marker_da3fe381c7ef5b568e40a2a4503c5734.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>PELLAEA FALCATA</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/f/f0/Pellaea_falcata_2zz.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_874073428332a90f48497de3ed1f6db5 = L.marker(
+                [-37.16740550447258, 142.6131147419068],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_b36dbfa75aad90e76dd6c035d709a22c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_874073428332a90f48497de3ed1f6db5.setIcon(icon_b36dbfa75aad90e76dd6c035d709a22c);
+        
+    
+            marker_874073428332a90f48497de3ed1f6db5.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>PERSICARIA DECIPIENS</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/0/06/Persicaria_decipiens_habit6_Gwydir_Wetlands_%2816570891204%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0123240e274d08b6e5cf5b93bd3c4881 = L.marker(
+                [-37.76802962157423, 146.0134784501617],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_0d298f2431069052b1eba6f54671419f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_0123240e274d08b6e5cf5b93bd3c4881.setIcon(icon_0d298f2431069052b1eba6f54671419f);
+        
+    
+            marker_0123240e274d08b6e5cf5b93bd3c4881.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>PTERIS TREMULA</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/c/cf/Lomandra_longifolia_and_Pteris_tremula_Raven_Street_Reserve_Chermside_West_P1340740.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c055aec749243cffbcff58d43b221876 = L.marker(
+                [-37.526519318213225, 145.36333605653797],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_ec57ef6375383a3aa5710ca07fae2826 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_c055aec749243cffbcff58d43b221876.setIcon(icon_ec57ef6375383a3aa5710ca07fae2826);
+        
+    
+            marker_c055aec749243cffbcff58d43b221876.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>RANUNCULUS LAPPACEUS</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/0/0d/Ranunculus_lappaceus.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_384d05159d9e67f3873b742547f5dc46 = L.marker(
+                [-36.5898695985848, 143.63154481770871],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_a813273324df355e0d6d1aab4bcd94fa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_384d05159d9e67f3873b742547f5dc46.setIcon(icon_a813273324df355e0d6d1aab4bcd94fa);
+        
+    
+            marker_384d05159d9e67f3873b742547f5dc46.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>SELLIERA RADICANS</b><br><br><b>Water Needs:</b> 2000 to 2500mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/7/78/Selliera_radicans_%288696026274%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d40803ca26e55ae69694e8a8798fca5a = L.marker(
+                [-37.43193416845146, 143.7640574376111],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_d0646d7d54dc7d015f6c5074ab5692f3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_d40803ca26e55ae69694e8a8798fca5a.setIcon(icon_d0646d7d54dc7d015f6c5074ab5692f3);
+        
+    
+            marker_d40803ca26e55ae69694e8a8798fca5a.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>AUSTROSTIPA ELEGANTISSIMA</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/7/78/Austrostipa_elegantissima_Balranald_plant12_%288663380203%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3ffce0117c0854cd70ef26b762c2d319 = L.marker(
+                [-37.49932663608702, 142.68859127028534],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_7ad245afbfedd8ce5224354cb52c0572 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_3ffce0117c0854cd70ef26b762c2d319.setIcon(icon_7ad245afbfedd8ce5224354cb52c0572);
+        
+    
+            marker_3ffce0117c0854cd70ef26b762c2d319.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>TETRAGONIA TETRAGONIOIDES</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Sand,Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/2/20/Tetragonia_tetragonioides_kz05.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c94c293727f061fb79343f3918062b8a = L.marker(
+                [-37.366146131542855, 144.68868391028087],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_945ea3189cdf4b02b27aecb61b26ff8e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_c94c293727f061fb79343f3918062b8a.setIcon(icon_945ea3189cdf4b02b27aecb61b26ff8e);
+        
+    
+            marker_c94c293727f061fb79343f3918062b8a.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>THEMEDA TRIANDRA</b><br><br><b>Water Needs:</b> 600 to 900mm<br><b>Soil Type:</b> Sand,Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/5/53/Themeda_triandra_-_kangaroo_grass.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b576aad602e1de680ffaa6d60669ac85 = L.marker(
+                [-36.10068020351715, 144.38954575594502],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_8fb2d52106de28212a61bb260a303806 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_b576aad602e1de680ffaa6d60669ac85.setIcon(icon_8fb2d52106de28212a61bb260a303806);
+        
+    
+            marker_b576aad602e1de680ffaa6d60669ac85.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>URTICA INCISA</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Sand,Loam,Clay<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/f/fb/Urtica_incisa_%2815435542822%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ab560e79b65b54e565cea646f5fd1b5c = L.marker(
+                [-37.24415631486042, 143.87933010596055],
+                {}
+            ).addTo(map_d86911b05f583cfc66212264933dda00);
+        
+    
+            var icon_4f9a792ac1cbe7b7deb803f92bd96b24 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "olive", "prefix": "glyphicon"}
+            );
+            marker_ab560e79b65b54e565cea646f5fd1b5c.setIcon(icon_4f9a792ac1cbe7b7deb803f92bd96b24);
+        
+    
+            marker_ab560e79b65b54e565cea646f5fd1b5c.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>WAHLENBERGIA GRACILIS</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Sand,Loam<br><b>Light Needs:</b> Sun<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/e/ec/Wahlenbergia_gracilis_plant10_DC_-_Flickr_-_Macleay_Grass_Man.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

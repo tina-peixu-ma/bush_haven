@@ -1,0 +1,148 @@
+.elementor-1157 .elementor-element.elementor-element-a6f289b{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}.elementor-1157 .elementor-element.elementor-element-6f03aec{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}/* Start custom CSS for html, class: .elementor-element-d1740b9 */#find-plants-water {
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    color: #4CAF50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#water-search {
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  overflow: hidden;
+  text-align: center;
+}
+
+#water-search-form {
+  display: block;
+  align-items: center;
+}
+
+#water-search-form label {
+  font-weight: bold;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+#water-search-form select {
+  padding: 9px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 40px;
+}
+
+#water-search-form button:hover {
+  background-color: #45a049;
+}
+
+#water-search-form button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+#water-search-form button[type="button"] {
+    background-color: #a65b26;
+}
+
+#water-search-form button[type="button"]:hover {
+    background-color: #8B4513;
+}
+
+#image-gallery-water {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+}
+.image-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 400px;
+  height: 400px;
+  perspective: 1000px;
+  display: inline-block;
+}
+
+.flip-card-inner {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /*box-sizing: border-box;*/
+  overflow: hidden;
+  border-radius:15px;
+}
+
+.flip-card-front {
+  background-color: #f9f9f9;
+  border: 2px solid #f2f2f2;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, #004d00, #8B4513);
+  transform: rotateY(180deg);
+  /*color: #fff;*/
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 15px;
+}
+
+
+.flip-card-back p {
+    margin: 0;
+    padding: 0px;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: bold;
+}/* End custom CSS */
