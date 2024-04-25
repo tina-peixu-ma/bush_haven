@@ -5,6 +5,93 @@ function my_child_theme_enqueue_styles() {
     wp_enqueue_style('parent-theme-style', get_template_directory_uri() . '/var/www/html/wordpress/wp-content/themes/twentytwentyfour/style.css');
 }
 
+
+/**
+ * Send email.
+ */
+function send_plant_email_handler() {
+    $email_to = sanitize_email($_POST['email_to']);
+    $email_sender_name = sanitize_text_field($_POST['email_sender_name']);
+    $email_recipient_name = sanitize_text_field($_POST['email_recipient_name']);
+    // $email_body = wp_kses_post($_POST['email_body']);
+    $allowed_tags = array(
+        'img' => array(
+            'src' => array(),
+            'style' => array(),
+            'alt' => array(),
+            'height' => array(),
+            'width' => array(),
+            'decoding' => array()
+        ),
+    'strong' => array()
+    );
+    $email_body = wp_kses($_POST['email_body'], $allowed_tags);
+
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+    $subject = "Plant Recommendation from " . $email_sender_name;
+    $body = nl2br($email_body);
+
+    $styled_body = "<html><body style='font-family: Georgia, sans-serif; padding: 10px;'>" . $body . "</body></html>";
+
+    if (wp_mail($email_to, $subject, $styled_body, $headers)) {
+        wp_send_json_success('Email sent successfully');
+    } else {
+        wp_send_json_error('Failed to send email');
+    }
+    wp_die();
+}
+
+add_action('wp_ajax_send_plant_email', 'send_plant_email_handler');
+add_action('wp_ajax_nopriv_send_plant_email', 'send_plant_email_handler');
+
+/**
+ * Update and fetch the counter values.
+ */
+function update_counter_values(){
+    $addValue = isset($_POST['addValue']) ? intval($_POST['addValue']) : 0;
+    $threatenedStatus = sanitize_text_field($_POST['threatenedStatus']);
+    $addEmissionsValue = isset($_POST['addEmissionsValue']) ? intval($_POST['addEmissionsValue']) : 0;
+
+    $counterValue = get_option('counterValue', 0) + $addValue;
+    update_option('counterValue', $counterValue);
+
+    if ($threatenedStatus !== 'N/A') {
+        $counterVulnerable = get_option('counterVulnerable', 0) + $addValue;
+        update_option('counterVulnerable', $counterVulnerable);
+    }
+
+    $counterEmissions = get_option('counterEmissions', 0) + $addEmissionsValue;
+    update_option('counterEmissions', $counterEmissions);
+
+    wp_send_json_success(array(
+        'counterValue' => $counterValue,
+        'counterVulnerable' => get_option('counterVulnerable'),
+        'counterEmissions' => $counterEmissions
+    ));
+
+    wp_die();
+}
+add_action('wp_ajax_update_counter_values', 'update_counter_values');
+add_action('wp_ajax_nopriv_update_counter_values', 'update_counter_values');
+
+function get_counter_values() {
+    $counterValue = get_option('counterValue', 0);
+    $counterVulnerable = get_option('counterVulnerable', 0);
+    $counterEmissions = get_option('counterEmissions', 0);
+
+    wp_send_json_success(array(
+        'counterValue' => $counterValue,
+        'counterVulnerable' => $counterVulnerable,
+        'counterEmissions' => $counterEmissions
+    ));
+
+    wp_die();
+}
+add_action('wp_ajax_get_counters', 'get_counter_values');
+add_action('wp_ajax_nopriv_get_counters', 'get_counter_values');
+
+
+
 /**
  * Establish MySQL database connection.
  */
@@ -27,16 +114,29 @@ function get_plants_by_name($cleanedInput) {
 
     $likeParam = "%" . strtolower($cleanedInput) . "%";
 
-    $sql = "SELECT Botanical_name
-            FROM water_plant
-            WHERE LOWER(Botanical_name) LIKE ?
-               OR LOWER(Common_name) LIKE ?
-               AND IF_image = 'Yes'
-               AND Image_location LIKE '%s.jpg' LIMIT 100";
+    $sql = "WITH RankedWaterPlants AS (
+              SELECT
+                Botanical_name,
+                Plant_code,
+                ROW_NUMBER() OVER(PARTITION BY Plant_code ORDER BY Botanical_name) AS rn
+              FROM
+                water_plant
+              WHERE
+                (LOWER(Botanical_name) LIKE ? OR LOWER(Common_name) LIKE ?)
+                AND IF_image = 'Yes'
+                AND Image_location LIKE '%.jpg'
+            )
+            SELECT
+              Botanical_name
+            FROM
+              RankedWaterPlants
+            WHERE
+              rn = 1
+            LIMIT 100";
 
     $stmt = $db->prepare($sql);
     $stmt->bind_param("ss", $likeParam, $likeParam);
-    
+
     $stmt->execute();
     $result = $stmt->get_result();
     $plants = array();
@@ -73,10 +173,6 @@ function handle_get_plants_by_name(){
 }
 add_action('wp_ajax_handle_get_plants_by_name', 'handle_get_plants_by_name');
 add_action('wp_ajax_nopriv_handle_get_plants_by_name', 'handle_get_plants_by_name');
-
-
-
-
 
 /**
  * Retrieve plant types based on the user-selected location. --------------- version 2.0
@@ -213,14 +309,51 @@ function get_plant_info($botanical_names) {
 
     $plant_info = array();
 
+    $overall_plant_captured = [
+        'Trees' => 18,
+        'Shrubs and Bushes' => 5,
+        'Flowers and Plants' => 15,
+        'Fruits and Vegetables' => 2,
+        'Other Categories' => 5
+    ];
+
     foreach ($botanical_names as $botanical_name) {
-        $stmt = $db->prepare("SELECT * FROM water_plant WHERE Botanical_name = ? AND IF_image = 'Yes' AND Image_location LIKE '%.jpg'");
+        $sql = "WITH UniqueWaterPlants AS (
+                    SELECT
+                        *,
+                        ROW_NUMBER() OVER(PARTITION BY Botanical_name ORDER BY Botanical_name) AS rn
+                    FROM
+                        water_plant
+                    WHERE
+                        Botanical_name = ?
+                        AND IF_image = 'Yes'
+                        AND Native = 'Yes'
+                        AND Image_location LIKE '%.jpg'
+                )
+                SELECT
+                    *
+                FROM
+                    UniqueWaterPlants
+                WHERE
+                    rn = 1";
+
+        $stmt = $db->prepare($sql);
         $stmt->bind_param('s', $botanical_name);
         $stmt->execute();
         $result = $stmt->get_result();
-        $plant_data = $result->fetch_assoc();
 
-        $plant_info[] = $plant_data;
+        while ($plant_data = $result->fetch_assoc()) {
+            $dominatePlantType = $plant_data['Dominate_plant_type'];
+
+            if (isset($overall_plant_captured[$dominatePlantType])) {
+                $capturedValue = round($overall_plant_captured[$dominatePlantType] / 0.12);
+                $plant_data['Captured_CO2'] = $capturedValue;
+            } else {
+                $plant_data['Captured_CO2'] = 0;
+            }
+
+            $plant_info[] = $plant_data;
+        }
 
         $stmt->close();
     }
@@ -310,7 +443,7 @@ function generate_lifestyle_botanical_names($lifestyle_filter) {
     $lifestyle_botanical_names = array();
 
     foreach ($plant_types as $plant_type) {
-        $stmt = $db->prepare("SELECT Botanical_name FROM water_plant WHERE Plant_type = ? AND Maintenance = ? AND IF_image = 'Yes' LIMIT 100");
+        $stmt = $db->prepare("SELECT Botanical_name FROM water_plant WHERE Plant_type = ? AND Maintenance = ? AND IF_image = 'Yes' AND Native = 'Yes' LIMIT 20");
         $stmt->bind_param("ss", $plant_type, $maintenance);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -402,13 +535,14 @@ function get_plant_recommendation_attr($plantTypes, $heightRange, $spreadRange, 
 
     $placeholders = implode(',', array_fill(0, count($plantTypes), '?'));
 
-    $sql = "SELECT Botanical_name
-            FROM water_plant
-            WHERE Plant_type IN ($placeholders)";
-    
+    $sql = "WITH FilteredPlants AS (
+                SELECT Botanical_name, Plant_code, ROW_NUMBER() OVER(PARTITION BY Plant_code ORDER BY Botanical_name) AS rn
+                FROM water_plant
+                WHERE Plant_type IN ($placeholders)";
+
     $conditions = array();
     $params = $plantTypes;
-    
+
     if (!empty($heightRange)) {
         $conditions[] = "Height_ranges = ?";
         $params[] = $heightRange;
@@ -425,19 +559,17 @@ function get_plant_recommendation_attr($plantTypes, $heightRange, $spreadRange, 
         $conditions[] = "LOWER(Flower_colour) LIKE ?";
         $params[] = '%' . strtolower($flowerColour) . '%';
     }
-    
     if (!empty($conditions)) {
         $sql .= " AND " . implode(" AND ", $conditions);
     }
-    
-    $sql .= " AND IF_image = 'Yes' LIMIT 100";
+
+    $sql .= " AND IF_image = 'Yes' AND Native = 'Yes' AND Image_location LIKE '%.jpg') SELECT Botanical_name FROM FilteredPlants WHERE rn=1 LIMIT 100";
 
     $stmt = $db->prepare($sql);
 
     $types = str_repeat('s', count($params));
 
     $stmt->bind_param($types, ...$params);
-    
     $stmt->execute();
     $stmt->bind_result($botanicalName);
 
@@ -527,10 +659,27 @@ function get_water_needs($userInputName) {
 
     $likeParam = "%" . strtolower($cleanedInputName) . "%";
 
-    $sql = "SELECT *
-            FROM water_plant
-            WHERE (LOWER(Botanical_name) LIKE ? OR LOWER(Common_name) LIKE ?) AND IF_image = 'Yes' AND Image_location LIKE '%.jpg'
-            LIMIT 100";
+    $sql = "
+        WITH RankedWaterPlants AS (
+            SELECT
+                *,
+                ROW_NUMBER() OVER(PARTITION BY Plant_code ORDER BY Botanical_name) AS rn
+            FROM
+                water_plant
+            WHERE
+                (LOWER(Botanical_name) LIKE ? OR LOWER(Common_name) LIKE ?)
+                AND IF_image = 'Yes'
+                AND Native = 'Yes'
+                AND Image_location LIKE '%.jpg'
+        )
+        SELECT
+            *
+        FROM
+            RankedWaterPlants
+        WHERE
+            rn = 1
+        LIMIT 20
+    ";
 
     $stmt = $db->prepare($sql);
 

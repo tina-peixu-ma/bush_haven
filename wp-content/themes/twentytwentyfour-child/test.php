@@ -26,15 +26,6 @@ print_r($lon_lat_data);
 //print_r($plants_with_water_needs);
 
 
-
-
-
-
-
-
-
-
-
 //$x=get_plants_by_name($userInputName);
 //print_r($x);
 //var_dump($x);
@@ -47,6 +38,7 @@ print_r($lon_lat_data);
 
 //print_r($y);
 $plants = get_plants_by_name($userInputName);
+var_dump($plants);
 $botanical_names = array_map(function($item) {
    return $item['Botanical_name'];
 }, $plants);
@@ -54,5 +46,8 @@ if ($botanical_names) {
    $plant_info = get_plant_info($botanical_names);
    $response = json_encode($plant_info);
    echo $response;
+}
+else {
+   echo 'error';
 }
 ?>

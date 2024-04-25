@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cea8255e39b3ed5e6f1037e3a10fbf9f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 50px; right: 50px; z-index: 1000; background-color: transparent; border: 2px solid black; padding: 3px; max-height: 200px; overflow-y: auto;">
+     <p style="font-size: 16px;"><b>Legend</b></p>
+     <p><i class="fa fa-circle fa-lg" style="color:blue"></i> Shrub</p>
+     <p><i class="fa fa-circle fa-lg" style="color:green"></i> Aquatic</p>
+     <p><i class="fa fa-circle fa-lg" style="color:red"></i> Medium Tree</p>
+     <p><i class="fa fa-circle fa-lg" style="color:orange"></i> Perennial</p>
+     <p><i class="fa fa-circle fa-lg" style="color:purple"></i> Grass</p>
+     <p><i class="fa fa-circle fa-lg" style="color:pink"></i> Annual</p>
+     <p><i class="fa fa-circle fa-lg" style="color:gray"></i> Bulb</p>
+     <p><i class="fa fa-circle fa-lg" style="color:brown"></i> Fern</p>
+     <p><i class="fa fa-circle fa-lg" style="color:lime"></i> Climber</p>
+     <p><i class="fa fa-circle fa-lg" style="color:magenta"></i> Small Tree</p>
+     <p><i class="fa fa-circle fa-lg" style="color:lime"></i> Groundcover</p>
+     <p><i class="fa fa-circle fa-lg" style="color:olive"></i> Herb, Perennial</p>
+</div>
+    
+            <div class="folium-map" id="map_cea8255e39b3ed5e6f1037e3a10fbf9f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cea8255e39b3ed5e6f1037e3a10fbf9f = L.map(
+                "map_cea8255e39b3ed5e6f1037e3a10fbf9f",
+                {
+                    center: [-19.42, 133.36],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_72e259a7d35b3111bf01757a5bfe832d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_72e259a7d35b3111bf01757a5bfe832d.addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var marker_129d2e98bdb753ac4e5372bbfc845d40 = L.marker(
+                [-19.691621928847205, 131.3478435492469],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_8d24b18276270a3911142cd75f3226a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_129d2e98bdb753ac4e5372bbfc845d40.setIcon(icon_8d24b18276270a3911142cd75f3226a7);
+        
+    
+            marker_129d2e98bdb753ac4e5372bbfc845d40.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Mangrove Fern</b><br><br><b>Water Needs:</b> 2000 to 2500mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/2/22/Acrostichum-speciosum-SF22217-02.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5ef92af3e11c19da9b2fb92fe1651b20 = L.marker(
+                [-20.314571280177876, 134.67489805430642],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_cfdaa477fe4ab237e0a53674acd592f2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_5ef92af3e11c19da9b2fb92fe1651b20.setIcon(icon_cfdaa477fe4ab237e0a53674acd592f2);
+        
+    
+            marker_5ef92af3e11c19da9b2fb92fe1651b20.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Mangrove Fern</b><br><br><b>Water Needs:</b> 2000 to 2500mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/2/22/Acrostichum-speciosum-SF22217-02.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7454d0f8ae54d1cc432fa6b8a0362d43 = L.marker(
+                [-19.39640362163354, 131.32895403821905],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_34f11effdf92a6495eeb1157b3411eef = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_7454d0f8ae54d1cc432fa6b8a0362d43.setIcon(icon_34f11effdf92a6495eeb1157b3411eef);
+        
+    
+            marker_7454d0f8ae54d1cc432fa6b8a0362d43.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Native Maidenhair Fern</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam,Clay<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/b/b7/Maidenhair_fern_%284411822366%29.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_886dcb4c9c9f1a240695b51c17591fca = L.marker(
+                [-16.83499142117404, 130.51724558711734],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_b9c2c278ee94beeefe80396b2fa2efb6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_886dcb4c9c9f1a240695b51c17591fca.setIcon(icon_b9c2c278ee94beeefe80396b2fa2efb6);
+        
+    
+            marker_886dcb4c9c9f1a240695b51c17591fca.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Rough Maidenhair Fern</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam,Clay<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/b/b7/The_fern_garden_-_how_to_make%2C_keep%2C_and_enjoy_it_%3B_or%2C_Fern_culture_made_easy_%28IA_ferngardenhowto00hibb%29.pdf' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e7156d9725102047c1a6f7832b07ea1d = L.marker(
+                [-19.20370293018453, 134.2741730001242],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_5b13a65f993d1fc00d79a9fa0c87890d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_e7156d9725102047c1a6f7832b07ea1d.setIcon(icon_5b13a65f993d1fc00d79a9fa0c87890d);
+        
+    
+            marker_e7156d9725102047c1a6f7832b07ea1d.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>King Fern</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/2/24/Marattia_salicina_JdP.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e2ea0dc125ddb4d2a1226a9fca3e9de = L.marker(
+                [-17.674299021476717, 132.1437118543863],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_5c424842269aac17257bd0ecc7359cff = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_0e2ea0dc125ddb4d2a1226a9fca3e9de.setIcon(icon_5c424842269aac17257bd0ecc7359cff);
+        
+    
+            marker_0e2ea0dc125ddb4d2a1226a9fca3e9de.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Bat's Wing Fern</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/b/b3/The_Fern_bulletin._%28IA_fernbulletin1920clut%29.pdf' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8dcddd8922030e01968a77c1f7cf3156 = L.marker(
+                [-19.00092495282537, 134.52842232403054],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_420031a43293d3ee10c13bb2a3aeaa71 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8dcddd8922030e01968a77c1f7cf3156.setIcon(icon_420031a43293d3ee10c13bb2a3aeaa71);
+        
+    
+            marker_8dcddd8922030e01968a77c1f7cf3156.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Nardoo</b><br><br><b>Water Needs:</b> 2500mm or more<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/7/7b/Marsilea_drummondii_cropped.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7c64093afb463c2ab622960776604aa9 = L.marker(
+                [-17.324960360677743, 130.87584980841777],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_d987d66c102d131592bf07f610513252 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_7c64093afb463c2ab622960776604aa9.setIcon(icon_d987d66c102d131592bf07f610513252);
+        
+    
+            marker_7c64093afb463c2ab622960776604aa9.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Nardoo</b><br><br><b>Water Needs:</b> 2500mm or more<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Sun,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Dry Tropical,Humid Subtropical,Dry Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/7/7b/Marsilea_drummondii_cropped.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f329ba5ba1ad55f299b5683b4ad38c9c = L.marker(
+                [-17.378903778713294, 132.85847218220638],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_5b33e348ad9162e80049371495640ea3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_f329ba5ba1ad55f299b5683b4ad38c9c.setIcon(icon_5b33e348ad9162e80049371495640ea3);
+        
+    
+            marker_f329ba5ba1ad55f299b5683b4ad38c9c.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Limelight Fern</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/b/be/Sandspur%2C_Vol._26%2C_No._25%2C_March_27%2C_1925._%28IA_dp0008711%29.pdf' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8103e6e336a360c203198d3087bd613a = L.marker(
+                [-18.07239387047104, 136.35135492648973],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_b4f8947376d3b6e470866fbeb0b670dd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_8103e6e336a360c203198d3087bd613a.setIcon(icon_b4f8947376d3b6e470866fbeb0b670dd);
+        
+    
+            marker_8103e6e336a360c203198d3087bd613a.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Ostrich Fern</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/d/db/Ostrich_fern_at_Myrstigen_trail_1.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1e318657bdc6461b06431519883ef81d = L.marker(
+                [-17.58475054884945, 135.3148761911857],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_ab8735f796d7dbb4e56e2bbb59c2949c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_1e318657bdc6461b06431519883ef81d.setIcon(icon_ab8735f796d7dbb4e56e2bbb59c2949c);
+        
+    
+            marker_1e318657bdc6461b06431519883ef81d.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Musk Fern</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/5/5e/Gillett%27s_hardy_fern_and_flower_farm_-_wholesale_trade_list_%28IA_CAT31290031%29.pdf' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_571b6debe721beb43ed6b1b52892fddf = L.marker(
+                [-19.318057483908063, 132.1793888086884],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_1bade1559f5dd1b181bc542213774e73 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_571b6debe721beb43ed6b1b52892fddf.setIcon(icon_1bade1559f5dd1b181bc542213774e73);
+        
+    
+            marker_571b6debe721beb43ed6b1b52892fddf.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Trembling Brake Fern</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/b/b0/Rose_Brake%3B_poems_%28IA_rosebrakepoems00dand%29.pdf' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2ef045503300f98e3e26147e76399332 = L.marker(
+                [-17.418360627537382, 133.03152432256218],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_33fac8d21b0c94c34b478e1fdc882384 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_2ef045503300f98e3e26147e76399332.setIcon(icon_33fac8d21b0c94c34b478e1fdc882384);
+        
+    
+            marker_2ef045503300f98e3e26147e76399332.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Cliff Brake Fern</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/6/60/Pellaea_atropurpurea-forms.gif' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26a709bc4a73a40c4b03bea9b500cd41 = L.marker(
+                [-18.050935537347087, 131.7398488376104],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_de96ec2a6b9cc19e694d2bc4e09187be = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_26a709bc4a73a40c4b03bea9b500cd41.setIcon(icon_de96ec2a6b9cc19e694d2bc4e09187be);
+        
+    
+            marker_26a709bc4a73a40c4b03bea9b500cd41.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Swamp Fern</b><br><br><b>Water Needs:</b> 1400 to 2000mm<br><b>Soil Type:</b> Loam<br><b>Light Needs:</b> Semi-shade<br><b>Climate Zones:</b> Humid Tropical,Humid Subtropical<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/f/f1/Swamp_Fern_Range.png' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_78418edaf68bb71f6d19c74d86b293b9 = L.marker(
+                [-17.865302632203132, 133.4766696641745],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_8d4da771d0a635469132ebbb1022f062 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "cyan", "prefix": "glyphicon"}
+            );
+            marker_78418edaf68bb71f6d19c74d86b293b9.setIcon(icon_8d4da771d0a635469132ebbb1022f062);
+        
+    
+            marker_78418edaf68bb71f6d19c74d86b293b9.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Climbing Maidenhair Fern</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Sand,Loam,Clay<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/f/f7/ARS_Lygodium_microphyllum_foliage.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_40673726d429fa48c95554640881f09a = L.marker(
+                [-17.467080565577163, 135.99818004945226],
+                {}
+            ).addTo(map_cea8255e39b3ed5e6f1037e3a10fbf9f);
+        
+    
+            var icon_64cff976e1aabb27bbfef74d9384c743 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "brown", "prefix": "glyphicon"}
+            );
+            marker_40673726d429fa48c95554640881f09a.setIcon(icon_64cff976e1aabb27bbfef74d9384c743);
+        
+    
+            marker_40673726d429fa48c95554640881f09a.bindTooltip(
+                `<div>
+                     <div style='font-size: 16px; text-align: center;'><b>Climbing Maidenhair Fern</b><br><br><b>Water Needs:</b> 900 to 1400mm<br><b>Soil Type:</b> Sand,Loam,Clay<br><b>Light Needs:</b> Shade,Semi-shade<br><b>Climate Zones:</b> Humid Subtropical,Temperate<br><br><img src='https://upload.wikimedia.org/wikipedia/commons/f/f7/ARS_Lygodium_microphyllum_foliage.jpg' style='display: block; margin: auto;' width='300px'></div>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

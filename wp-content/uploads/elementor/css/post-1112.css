@@ -1,31 +1,53 @@
-.elementor-1112 .elementor-element.elementor-element-dea8f0f{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}.elementor-1112 .elementor-element.elementor-element-4c12a9f{width:100%;max-width:100%;}.elementor-1112 .elementor-element.elementor-element-53c6628{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}.elementor-1112 .elementor-element.elementor-element-2d13c5e > .elementor-widget-container{margin:-20px -150px 0px -150px;}.elementor-1112 .elementor-element.elementor-element-2d13c5e{width:100%;max-width:100%;}.elementor-1112 .elementor-element.elementor-element-083c5b9{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}/* Start custom CSS for html, class: .elementor-element-6f4f3a7 */#find-plants-name {
+.elementor-1112 .elementor-element.elementor-element-dea8f0f{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}.elementor-1112 .elementor-element.elementor-element-dea8f0f.e-con{--flex-grow:0;--flex-shrink:0;}.elementor-1112 .elementor-element.elementor-element-4c12a9f{width:100%;max-width:100%;}.elementor-1112 .elementor-element.elementor-element-53c6628{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}.elementor-1112 .elementor-element.elementor-element-2d13c5e > .elementor-widget-container{margin:-20px -150px 0px -150px;}.elementor-1112 .elementor-element.elementor-element-2d13c5e{width:100%;max-width:100%;}.elementor-1112 .elementor-element.elementor-element-083c5b9{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}.elementor-1112 .elementor-element.elementor-element-083c5b9.e-con{--flex-grow:0;--flex-shrink:0;}.elementor-1112 .elementor-element.elementor-element-6f4f3a7 > .elementor-widget-container{margin:40px 40px 40px 40px;}.elementor-1112 .elementor-element.elementor-element-2f3f05c{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--background-transition:0.3s;}.elementor-1112 .elementor-element.elementor-element-897c722 > .elementor-widget-container{margin:0px -150px 0px -150px;}.elementor-1112 .elementor-element.elementor-element-897c722{width:100%;max-width:100%;}@media(min-width:768px){.elementor-1112 .elementor-element.elementor-element-dea8f0f{--width:104.098%;}.elementor-1112 .elementor-element.elementor-element-083c5b9{--width:110.146%;}}/* Start custom CSS for html, class: .elementor-element-6f4f3a7 */body {
+    font-family: Georgia, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+#explanation{
+    font-family: 'Georgia';
+    /*color: rgba(23, 82, 22, 0.8);*/
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#find-plants-name {
     text-transform: uppercase;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Georgia', sans-serif;
     font-size: 30px;
-    color: #4CAF50;
+    color: rgba(23, 82, 22, 0.8);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     letter-spacing: 2px;
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 100px;
 }
 
 #plant-search-name {
     margin-top: 20px;
     background-color: #f9f9f9;
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;*/
     border-radius: 5px;
-    padding: 20px;
+    padding: 30px;
     overflow: hidden;
     margin-right: 20px;
     text-align: center;
-    width: 600px;
+    max-width: 600px;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 #plant-search-name-form {
   display: block;
   margin-top: 10px;
   margin-right: 20px;
+  
+ 
 }
 
 #plant-search-name-form label {
@@ -35,6 +57,7 @@
     margin-bottom: 10px;
     margin-right: 20px;
     white-space: nowrap;
+    
 }
 
 #plant-search-name-form select {
@@ -43,6 +66,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 40px;
+    
 }
 
 #plant-search-name-form button:hover {
@@ -50,12 +74,13 @@
 }
 
 #plant-search-name-form button {
-    background-color: #4CAF50;
+    /*background-color: #4CAF50;*/
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 45%;
     text-transform: uppercase;
     font-family: 'Arial', sans-serif;
     font-size: 14px;
@@ -69,109 +94,164 @@
     background-color: #8B4513;
 }
 
-#image-gallery-plant-name {
+#plant-search-name-form input[type="text"] {
+    padding: 10px;
+    font-size: 14px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+#main-plant-display {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0 20px;
+    padding: 5vh;
 }
 
-.flip-card {
-  background-color: transparent;
-  font-family: 'Arial', sans-serif;
-  width: 400px;
-  height: 400px;
-  perspective: 1000px;
-  display: inline-block;
+.plant-image-container {
+    position: relative;
+    right: 200px;
 }
 
-.flip-card-inner {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
+.plant-image {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+#main-plant-image {
+    height: 100%;
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease-in-out;
 }
 
-.flip-card-front {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  overflow: hidden;
-  border-radius:10px;
-}
-
-.flip-card-front {
-  background-color: #f9f9f9;
-  border: 2px solid #f2f2f2;
-}
-
-.flip-card-front img {
+.zoom-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
-.flip-card-back {
-  background: linear-gradient(135deg, #004d00, #8B4513);
-  color: #ffffff;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  transform: rotateY(180deg);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 20px;
-  /*display: block;*/
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.zoom-icon {
+    font-size: 2rem;
+    color: #fff;
+}
+
+#main-plant-image-container:hover .zoom-overlay {
+    opacity: 1;
 }
 
 .plant-image img {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
 }
 
 .plant-details {
-  text-align: center;
+    position: absolute;
+    top: 25%;
+    right: -420px;
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1;
 }
 
-.plant-name {
-  font-size: 18px;
-  font-weight: bold;
-  color: #ffffff;
+.plant-details h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
-.common-name {
-  font-size: 14px;
-  color: #ffffff;
+.plant-details p {
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .detail-row {
-  align-items: center;
+    margin-bottom: 5px;
+    font-size: 20px;
+    margin-right: 10px;
+    color: #4CAF50; 
+    align-items: center;
 }
 
 .detail-row i {
-  font-size: 20px;
-  margin-right: 10px;
-  color: #4CAF50; 
+    margin-right: 10px;
+    font-size: 20px;
+    color: #4CAF50; 
 }
 
 .detail-row span {
-  font-family: 'CustomFont', cursive;
+    color: #333;
+}
+
+#thumbnails-strip-container {
+    position: relative;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    overflow: hidden;
+}
+
+#thumbnails-strip {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 100px;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.thumbnail:hover {
+    transform: scale(1.1);
+}
+
+#prev-button, #next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    display: none;
+}
+
+#prev-button {
+    left: 10px;
+}
+
+#next-button {
+    right: 10px;
 }/* End custom CSS */
